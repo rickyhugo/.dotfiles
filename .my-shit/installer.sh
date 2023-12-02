@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # misc
-MY_GITIGNORE=~/.my-shit/.my-gitignore
-MY_ALIASES=~/.my-shit/.my-aliases
+MY_GITIGNORE=~/.my-shit/.gitignore
+MY_ALIASES=~/.my-shit/aliases.sh
 touch $MY_GITIGNORE $MY_ALIASES
 chmod u+x $MY_GITIGNORE $MY_ALIASES
 
@@ -14,6 +14,7 @@ function add_omz_plugin {
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
+echo "alias vim=nvim" >> $MY_ALIASES
 
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n

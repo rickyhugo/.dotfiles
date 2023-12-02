@@ -208,7 +208,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +20% # increase screen bright
 bindsym XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brightness
 
 # gnome, keyboard input, etc
-exec_always --no-startup-id ~/.my-shit/.my-i3-script.sh
+exec_always --no-startup-id ~/.my-shit/i3-setup.sh
 
 # move workspace to monitor
 bindsym $mod+m move workspace to output left
