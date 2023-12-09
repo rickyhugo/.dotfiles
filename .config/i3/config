@@ -213,9 +213,11 @@ exec_always --no-startup-id ~/.my-shit/i3-setup.sh
 # move workspace to monitor
 bindsym $mod+m move workspace to output left
 
-# external monitor
-bindsym $mod+Shift+s exec xrandr --output DP-2 --auto --left-of eDP-1
-# TODO: reverse above cmd
+# connect external monitor
+bindsym $mod+Shift+s exec xrandr --output DP-2 --auto --primary --left-of eDP-1
+
+# reset to laptop
+bindsym $mod+Shift+x exec xrandr --auto
 
 # ------------------------------------------
 # CUSTOM KEYS END

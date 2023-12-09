@@ -27,6 +27,13 @@ echo 'font_size 10' >> ~/.config/kitty/kitty.conf
 # packages
 sudo apt update
 
+# i3
+/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb keyring.deb SHA256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4
+sudo apt install ./keyring.deb
+echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
+sudo apt update
+sudo apt install i3
+
 # git
 sudo apt install git-all -y
 git config --global core.excludesfile $MY_GITIGNORE
@@ -81,7 +88,8 @@ echo '\n# z-around' >> ~/.zshrc
 echo '. ~/z-around/z.sh' >> ~/.zshrc
 
 # fzf
-sudo apt install fzf -y
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 add_omz_plugin fzf
 echo '\n# fzf' >> ~/.zshrc
 echo 'export FZF_PREVIEW_ADVANCED=true' >> ~/.zshrc
@@ -186,6 +194,7 @@ nvm install --lts
 
 # pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
+pnpm install -g neovim
 
 # gh cli
 type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
