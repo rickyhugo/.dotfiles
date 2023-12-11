@@ -60,12 +60,21 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = { "*.py", "*.lua" },
+	callback = function()
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.tabstop = 4
+	end,
+})
+
 vim.o.shortmess = vim.o.shortmess .. "I" -- Disable intro message
 
 vim.opt.splitright = true -- Vertical split to the right
 
--- modify tab size for specific file types
-vim.api.nvim_create_autocmd(
-	{ "BufEnter" },
-	{ pattern = { "*.py, *.lua" }, command = ":setlocal tabstop=4 shiftwidth=4 expandtab" }
-)
+-- Diagnostic symbols in sign column
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end

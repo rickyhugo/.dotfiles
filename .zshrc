@@ -133,6 +133,7 @@ eval "$(pyenv init -)"
 
 # fzf
 export FZF_PREVIEW_ADVANCED=true 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pnpm
 export PNPM_HOME="/home/huen/.local/share/pnpm"
@@ -149,4 +150,6 @@ export NVM_DIR="$HOME/.nvm"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# modular:mojo
+export MODULAR_HOME="/home/huen/.modular"
+export PATH="/home/huen/.modular/pkg/packages.modular.com_mojo/bin:$PATH"

@@ -1,9 +1,9 @@
 return {
-  -- neodev
-  "folke/neodev.nvim",
+	-- neodev
+	"folke/neodev.nvim",
 
-  -- neoconf
-  { "folke/neoconf.nvim", cmd = "Neoconf" },
+	-- neoconf
+	{ "folke/neoconf.nvim", cmd = "Neoconf" },
 
 	-- zen mode
 	{
