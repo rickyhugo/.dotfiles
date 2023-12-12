@@ -196,7 +196,6 @@ return {
 			ensure_installed = {
 				"tsserver",
 				"eslint",
-				"emmet_ls",
 				"tailwindcss",
 				"lua_ls",
 				"bashls",

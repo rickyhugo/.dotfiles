@@ -34,6 +34,9 @@ echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-relea
 sudo apt update
 sudo apt install i3
 
+# i3-lock
+sudo apt install i3lock xautolock -y
+
 # git
 sudo apt install git-all -y
 git config --global core.excludesfile "$MY_GITIGNORE"
@@ -143,6 +146,9 @@ sudo groupadd docker
 sudo usermod -aG docker "$USER"
 newgrp docker
 # docker END
+
+# docker-compose-plugin
+sudo apt-get install docker-compose-plugin
 
 # lazydocker
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash

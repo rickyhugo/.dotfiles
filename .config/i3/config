@@ -194,6 +194,9 @@ bar {
 # CUSTOM KEYS START
 # ------------------------------------------
 
+# define alt key
+set $alt Mod1
+
 # open config
 bindsym $mod+c exec kitty -e nvim ~/.config/i3/config
 
@@ -216,8 +219,11 @@ bindsym $mod+m move workspace to output left
 # connect external monitor
 bindsym $mod+Shift+s exec xrandr --output DP-2 --auto --primary --left-of eDP-1
 
-# reset to laptop
+# reset to laptop monitor
 bindsym $mod+Shift+x exec xrandr --auto
+
+# lock screen
+bindsym ctrl+$alt+l exec "i3lock -c 000000"
 
 # ------------------------------------------
 # CUSTOM KEYS END

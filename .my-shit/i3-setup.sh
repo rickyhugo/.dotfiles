@@ -10,3 +10,6 @@ xset r rate 220 150
 touchpad="VEN_04F3:00 04F3:311C Touchpad"
 xinput set-prop "$touchpad" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
+
+# proper screen locking
+xautolock -detectsleep -time 3 -locker \"i3lock -c 000000\"
