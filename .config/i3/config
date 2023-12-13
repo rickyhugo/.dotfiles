@@ -207,7 +207,7 @@ bindsym $mod+s workspace number $ws2
 bindsym $mod+d workspace number $ws3
 
 # browser
-bindsym $mod+b+Return exec google-chrome-stable
+bindsym $mod+b exec google-chrome-stable
 
 # toggle layouts
 bindsym $mod+t layout toggle tabbed splith splitv
