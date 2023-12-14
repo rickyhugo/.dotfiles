@@ -195,7 +195,6 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"tsserver",
-				"emmet_ls",
 				"eslint",
 				"tailwindcss",
 				"lua_ls",
