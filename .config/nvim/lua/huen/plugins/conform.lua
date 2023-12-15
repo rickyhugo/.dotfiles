@@ -19,14 +19,9 @@ return {
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format" },
 				sh = { "beautysh", "shellharden" },
-				sql = { "sqlfluff" },
+				sql = { "pg_format" },
 				toml = { "taplo" },
 				rust = { "rustfmt" },
-			},
-			formatters = {
-				sqlfluff = {
-					prepend_args = { "--dialect", "postgres" },
-				},
 			},
 			format_on_save = {
 				lsp_fallback = true,
