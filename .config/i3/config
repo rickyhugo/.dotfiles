@@ -201,11 +201,6 @@ bar {
 # open config
 bindsym $mod+c exec kitty -e nvim ~/.config/i3/config
 
-# workspaces
-bindsym $mod+a workspace number $ws1
-bindsym $mod+s workspace number $ws2
-bindsym $mod+d workspace number $ws3
-
 # browser
 bindsym $mod+b exec google-chrome-stable
 
