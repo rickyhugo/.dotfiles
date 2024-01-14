@@ -23,6 +23,7 @@ kitty +kitten themes catppuccin-mocha
 printf '\n# hot stuff' >> ~/.config/kitty/kitty.conf
 echo 'window_padding_width 5 10' >> ~/.config/kitty/kitty.conf
 echo 'font_size 10' >> ~/.config/kitty/kitty.conf
+echo 'disable_ligatures cursor' >> ~/.config/kitty/kitty.conf
 
 # packages
 sudo apt update
@@ -35,7 +36,7 @@ sudo apt update
 sudo apt install i3
 
 # i3-lock
-sudo apt install i3lock xautolock -y
+sudo apt install i3lock xautolock
 
 # git
 sudo apt install git-all -y
@@ -52,10 +53,14 @@ echo "$SHELL"
 printf '\n# misc' >> ~/.zshrc
 echo "PATH=$PATH:~/.local/bin" >> ~/.zshrc
 
-# font
+# font: fira
 curl -sL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz | sudo tar xf - -J -C /usr/share/fonts/
 rm FiraCode.tar.xz
 echo 'font_family FiraCode Nerd Font Mono' >> ~/.config/kitty/kitty.conf
+
+# font: iosevka
+curl -sL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/IosevkaTerm.tar.xz | sudo tar xf - -J -C /usr/share/fonts/
+echo 'font_family Iosevka Term' >> ~/.config/kitty/kitty.conf
 
 # omz
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
