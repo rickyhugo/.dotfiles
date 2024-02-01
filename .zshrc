@@ -126,11 +126,6 @@ PATH=$PATH:~/.local/bin
 # z-around
 . ~/z-around/z.sh
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # fzf
 export FZF_PREVIEW_ADVANCED=true 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
