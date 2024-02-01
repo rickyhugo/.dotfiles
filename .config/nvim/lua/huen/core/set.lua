@@ -53,7 +53,7 @@ vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
 
-vim.g.python3_host_prog = "/home/huen/.pyenv/versions/neovim/bin/python"
+vim.g.python3_host_prog = "/home/huen/.local/share/mise/installs/python/3.10/bin/python"
 
 vim.g.loaded_perl_provider = 0
 

@@ -22,6 +22,7 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-emoji",
 		},
 	},
 	config = function()
@@ -72,6 +73,7 @@ return {
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
 				{ name = "path" },
+				{ name = "emoji" },
 			},
 
 			window = {
@@ -81,11 +83,14 @@ return {
 			formatting = {
 				format = require("lspkind").cmp_format({
 					mode = "symbol_text",
+					max_width = 50,
+					ellipsis_char = "...",
 					menu = {
 						buffer = "[BUF]",
 						nvim_lsp = "[LSP]",
 						luasnip = "[SNIP]",
 						path = "[PATH]",
+						emoji = "[EMOJI]",
 					},
 				}),
 			},

@@ -10,7 +10,6 @@ return {
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			svelte = { "eslint_d" },
-			python = { "ruff" },
 			sql = { "sqlfluff" },
 			zsh = { "zsh" },
 			sh = { "shellcheck" },

@@ -118,10 +118,13 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source ~/.tmux.conf
 # NOTE: press '<C-t>+I' to install plugins
 
-# direnv
-sudo apt install direnv -y
-add_omz_plugin direnv
-echo '.envrc' >> "$MY_GITIGNORE"
+# mise
+curl https://mise.run | sh
+~/.local/bin/mise --version
+echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+echo '.mise.toml' >> "$MY_GITIGNORE"
+mise use -g python@3.10 # mise:python
+mise use -g node@20 # mise:node
 
 # ripgrep
 sudo apt install ripgrep -y
@@ -159,35 +162,6 @@ sudo apt-get install docker-compose-plugin
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 echo 'alias lzd=lazydocker' >> "$MY_ALIASES"
 
-# pyenv
-sudo apt-get install build-essential -y
-curl https://pyenv.run | bash
-prinf '\n# pyenv' >> ~/.zshrc
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-# NOTE: https://github.com/pyenv/pyenv/issues/950
-sudo apt install --no-install-recommends -y \
-    libssl-dev \
-    ncurses-dev \
-    libffi-dev \
-    libreadline-dev \
-    sqlite3 libsqlite3-dev \
-    tk-dev \
-    bzip2 libbz2-dev \
-    zlib1g-dev \
-    lzma liblzma-dev
-. ~/.zshrc
-PYTHON_VERSION=3.10
-pyenv install "$PYTHON_VERSION"
-pyenv global "$PYTHON_VERSION"
-python -m pip install -U pip
-# NOTE: neovim venv
-pyenv virtualenv "$PYTHON_VERSION" neovim
-pyenv activate neovim
-python -m pip install -U pip
-pip install --no-cache-dir -U pynvim
-
 # pipx
 # NOTE: ensure below is run with python from pyenv, not system
 python -m pip install --user pipx
@@ -198,11 +172,6 @@ pipx install pdm
 mkdir "$ZSH_CUSTOM"/plugins/pdm
 pdm completion zsh > "$ZSH_CUSTOM"/plugins/pdm/_pdm
 add_omz_plugin pdm
-
-# node (nvm)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-. ~/.zshrc
-nvm install --lts
 
 # pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -

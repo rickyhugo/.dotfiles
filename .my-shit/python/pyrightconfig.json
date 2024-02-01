@@ -7,6 +7,8 @@
   "include": ["src"],
   "typeCheckingMode": "basic",
 
+  "ignore": ["**/*.ipynb"],
+
   "reportPrivateUsage": "warning",
   "reportCallInDefaultInitializer": "error",
   "reportImplicitOverride": "error",
@@ -15,7 +17,7 @@
   "reportPropertyTypeMismatch": "error",
   "reportShadowedImports": "error",
   "reportUninitializedInstanceVariable": "error",
-  "reportUnnecessaryTypeIgnoreComment": "error",
+  "reportUnnecessaryTypeIgnoreComment": "warning",
   "reportUnusedCallResult": "warning",
   "reportConstantRedefinition": "none",
   "reportFunctionMemberAccess": "error",

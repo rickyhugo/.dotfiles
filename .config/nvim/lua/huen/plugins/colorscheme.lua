@@ -8,9 +8,9 @@ return {
 		require("catppuccin").setup({
 			flavour = "mocha",
 			highlight_overrides = {
-				macchiato = function(macchiato)
+				mocha = function(mocha)
 					return {
-						LineNr = { fg = macchiato.text },
+						LineNr = { fg = mocha.text },
 						CursorLineNr = { fg = "#8f95aa" },
 					}
 				end,
