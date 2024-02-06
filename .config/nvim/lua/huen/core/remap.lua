@@ -14,7 +14,7 @@ keymap("n", "J", "mzJ`z")
 keymap("n", "<C-d>", "<C-d>zz")
 keymap("n", "<C-u>", "<C-u>zz")
 
--- keep searched word in centered when navigating
+-- keep searched word centered when navigating
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
 
@@ -63,12 +63,6 @@ keymap("n", "<M-h>", "<C-w>h")
 keymap("n", "<M-j>", "<C-w>j")
 keymap("n", "<M-k>", "<C-w>k")
 keymap("n", "<M-l>", "<C-w>l")
-
--- navigate panes: numbers
-keymap("n", "<M-1>", "1<C-w><C-w>")
-keymap("n", "<M-2>", "2<C-w><C-w>")
-keymap("n", "<M-3>", "3<C-w><C-w>")
-keymap("n", "<M-4>", "4<C-w><C-w>")
 
 -- snake case navigation
 keymap("n", ",b", "F_")
