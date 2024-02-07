@@ -133,6 +133,7 @@ echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
 echo '.mise.toml' >> "$MY_GITIGNORE"
 mise use -g python@3.10 # mise:python
 mise use -g node@20 # mise:node
+python -m pip install pynvim # NOTE: setup python client for neovim
 
 # ripgrep
 sudo apt install ripgrep -y
