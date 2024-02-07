@@ -31,9 +31,9 @@ return {
 		local lint_progress = function()
 			local linters = require("lint").get_running()
 			if #linters == 0 then
-				print("󱕛 No linters running...")
+				print("❌ No linters running...")
 			else
-				print("󰓒 " .. table.concat(linters, ", "))
+				print("✅" .. table.concat(linters, ", "))
 			end
 		end
 		vim.api.nvim_create_user_command("LinterInfo", lint_progress, {})
