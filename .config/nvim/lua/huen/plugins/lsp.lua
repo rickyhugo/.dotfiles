@@ -100,7 +100,6 @@ return {
 			ensure_installed = {
 				"prettierd",
 				"eslint_d",
-				"sqlfluff",
 				"beautysh",
 				"shellharden", -- NOTE: requires rust
 				"shellcheck",
@@ -206,7 +205,6 @@ return {
 				"marksman",
 				"pyright",
 				"ruff_lsp",
-				"sqlls",
 				"rust_analyzer",
 			},
 			automatic_installation = true,

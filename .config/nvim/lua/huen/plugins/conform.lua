@@ -19,7 +19,7 @@ return {
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format" },
 				sh = { "beautysh", "shellharden" },
-				sql = { "pg_format" },
+				sql = { "sqlfluff" },
 				toml = { "taplo" },
 				rust = { "rustfmt" },
 			},
@@ -29,5 +29,9 @@ return {
 				timeout_ms = 500,
 			},
 		})
+
+		require("conform").formatters.sqlfluff = {
+			args = { "fix", "--force", "-" },
+		}
 	end,
 }
