@@ -15,7 +15,7 @@ return {
 					"filename",
 					{
 						"diagnostics",
-						sources = { "nvim_lsp", "nvim_diagnostic" },
+						sources = { "nvim_lsp" },
 						symbols = { error = " ", warn = " ", info = " ", hint = " " },
 					},
 				},
