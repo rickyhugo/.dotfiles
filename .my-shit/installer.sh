@@ -236,6 +236,11 @@ cargo install spotifyd --locked
 sudo usermod -aG video "$USER" # NOTE: reboot required
 sudo apt install brightnessctl -y
 
+# displaylink driver: https://github.com/AdnanHodzic/displaylink-debian/tree/master
+git clone https://github.com/AdnanHodzic/displaylink-debian.git
+cd displaylink-debian
+sudo ./displaylink-debian.sh
+
 # clean
 sudo apt clean
 sudo apt autoremove
