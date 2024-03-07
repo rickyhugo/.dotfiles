@@ -5,6 +5,7 @@ return {
 		require("lualine").setup({
 			options = {
 				theme = "catppuccin",
+				disabled_filetypes = { "NvimTree" },
 			},
 			sections = {
 				lualine_b = {

@@ -80,7 +80,7 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	tmux
+  tmux
 	fzf
 	fzf-zsh-plugin
 	fzf-tab
@@ -88,7 +88,6 @@ plugins=(
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 	autoupdate
-	direnv
 	pdm
 )
 
