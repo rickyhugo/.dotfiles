@@ -1,5 +1,2 @@
-[settings]
-experimental = true # NOTE: needed to activate venv
-
-[tools]
-python = { version = "3.10", virtualenv = ".venv" }
+[env]
+_.python.venv = ".venv" # relative to this file's directory

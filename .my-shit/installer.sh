@@ -85,9 +85,6 @@ add_omz_plugin zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions # zsh-autosuggestions
 add_omz_plugin zsh-autosuggestions
 
-git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins "$ZSH_CUSTOM"/plugins/autoupdate # autoupdate
-add_omz_plugin autoupdate
-
 git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/fzf-zsh-plugin # fzf-zsh-plugin
 add_omz_plugin fzf-zsh-plugin
 

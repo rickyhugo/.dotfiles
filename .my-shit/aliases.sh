@@ -8,3 +8,4 @@ alias vsc=code
 alias chs="bash ~/.my-shit/scripts/headset.sh"
 alias ta='tmux attach -t'
 alias ts='tmux new-session -s'
+alias kb='~/.my-shit/scripts/keyboard.sh'

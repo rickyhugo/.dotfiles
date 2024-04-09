@@ -218,10 +218,10 @@ exec_always --no-startup-id ~/.my-shit/i3-setup.sh
 bindsym $mod+m move workspace to output left
 
 # connect external monitor
-bindsym $mod+Shift+s exec xrandr --output DVI-I-2-1 --auto --primary --right-of eDP-1
+bindsym $mod+Shift+s exec xrandr --output DP-2 --auto --primary --left-of eDP-1
 
 # reset to laptop monitor
-bindsym $mod+Shift+x exec xrandr --output eDP-1 --auto --output DVI-I-2-1 --off
+bindsym $mod+Shift+x exec xrandr --output eDP-1 --auto --output DP-2 --off
 
 # lock screen
 bindsym $mod+$alt+l exec i3lock -c 000000

@@ -47,7 +47,7 @@ vim.opt.undofile = true
 vim.opt.backspace = "start,eol,indent"
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "81"
 
 vim.opt.updatetime = 50
 

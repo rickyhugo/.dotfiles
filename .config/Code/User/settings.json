@@ -20,7 +20,7 @@
   "catppuccin.italicKeywords": false,
   "editor.fontFamily": "Iosevka Term",
   "editor.fontLigatures": true,
-  "editor.fontSize": 16,
+  "editor.fontSize": 15,
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
