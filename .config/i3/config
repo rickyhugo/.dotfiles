@@ -211,6 +211,16 @@ bindsym $mod+t layout toggle tabbed splith splitv
 bindsym XF86MonBrightnessUp exec brightnessctl set +20% # increase screen brightness
 bindsym XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brightness
 
+# media player
+bindsym Control+$alt+h exec playerctl previous && $refresh_i3status
+bindsym Control+$alt+l exec playerctl next && $refresh_i3status
+bindsym Control+$alt+space exec playerctl play-pause && $refresh_i3status
+
+# volume
+bindsym Control+$alt+j exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym Control+$alt+k exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym Control+$alt+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
 # gnome, keyboard input, etc
 exec_always --no-startup-id ~/.my-shit/i3-setup.sh
 
