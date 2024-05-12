@@ -165,27 +165,41 @@ return {
 		end
 
 		-- typescript
-		local function organize_imports()
-			local params = {
-				command = "_typescript.organizeImports",
-				arguments = { vim.api.nvim_buf_get_name(0) },
-				title = "Organize imports [TS]",
-			}
-			vim.lsp.buf.execute_command(params)
-		end
+		local ts_augroup = vim.api.nvim_create_augroup("TSAutocmds", { clear = true })
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = ts_augroup,
+			pattern = { "*.ts", "*.tsx" },
+			callback = function()
+				vim.lsp.buf.code_action({
+					apply = true,
+					context = {
+						only = { "source.organizeImports.ts" },
+					},
+				})
+				vim.cmd("write")
+			end,
+			desc = "Organize imports [TS]",
+		})
+
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			group = ts_augroup,
+			pattern = { "package.json" },
+			command = "LspRestart eslint",
+			desc = "Restart eslint upon changes in package.json [JS/TS]",
+		})
 
 		local function tsserver()
 			require("lspconfig").tsserver.setup({
-				commands = {
-					OrganizeImports = {
-						organize_imports,
-						description = "Organize imports",
-					},
-				},
 				settings = {
 					typescript = { format = { semicolons = "insert" } },
 					completions = {
 						completeFunctionCalls = true,
+					},
+				},
+				init_options = {
+					preferences = {
+						importModuleSpecifierPreference = "non-relative",
 					},
 				},
 			})
