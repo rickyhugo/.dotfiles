@@ -167,18 +167,19 @@ return {
 		-- typescript
 		local ts_augroup = vim.api.nvim_create_augroup("TSAutocmds", { clear = true })
 
+		local function organize_imports()
+			local params = {
+				command = "_typescript.organizeImports",
+				arguments = { vim.api.nvim_buf_get_name(0) },
+				title = "Organize imports [TS]",
+			}
+			vim.lsp.buf.execute_command(params)
+		end
+
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = ts_augroup,
 			pattern = { "*.ts", "*.tsx" },
-			callback = function()
-				vim.lsp.buf.code_action({
-					apply = true,
-					context = {
-						only = { "source.organizeImports.ts" },
-					},
-				})
-				vim.cmd("write")
-			end,
+			callback = organize_imports,
 			desc = "Organize imports [TS]",
 		})
 
@@ -192,7 +193,14 @@ return {
 		local function tsserver()
 			require("lspconfig").tsserver.setup({
 				settings = {
-					typescript = { format = { semicolons = "insert" } },
+					typescript = {
+						format = {
+							semicolons = "insert",
+							tabSize = 2,
+							indentSize = 2,
+							convertTabsToSpaces = true,
+						},
+					},
 					completions = {
 						completeFunctionCalls = true,
 					},
