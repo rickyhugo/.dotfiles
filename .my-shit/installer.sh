@@ -31,6 +31,9 @@ sudo apt update
 # playerctl
 sudo apt install playerctl -y
 
+# jq
+sudo apt install jq -y
+
 # i3
 /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb keyring.deb SHA256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4
 sudo apt install ./keyring.deb
@@ -73,46 +76,8 @@ echo 'font_family FiraCode Nerd Font Mono' >> ~/.config/kitty/kitty.conf
 curl -sL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/IosevkaTerm.tar.xz | sudo tar xf - -J -C /usr/share/fonts/
 echo 'font_family Iosevka Term' >> ~/.config/kitty/kitty.conf
 
-# omz
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-touch ~/.oh-my-zsh/custom/aliases.zsh
-echo ". $MY_ALIASES" >> ~/.oh-my-zsh/custom/aliases.zsh
-
-# omz plugins
-git clone https://github.com/jeffreytse/zsh-vi-mode "$ZSH_CUSTOM"/plugins/zsh-vi-mode # zsh-vi-mode
-add_omz_plugin zsh-vi-mode
-
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting # zsh-syntax-highlighting
-add_omz_plugin zsh-syntax-highlighting
-
-git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions # zsh-autosuggestions
-add_omz_plugin zsh-autosuggestions
-
-git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/fzf-zsh-plugin # fzf-zsh-plugin
-add_omz_plugin fzf-zsh-plugin
-
-git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/fzf-tab # fzf-tab
-add_omz_plugin fzf-tab
-
-# p10k
-# NOTE: "lean" theme, 8 colors
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
-sed -i "s|^ZSH_THEME=.*|ZSH_THEME=powerlevel10k/powerlevel10k|" .zshrc
-
-# z-around
-git clone https://github.com/rupa/z.git z-around
-printf '\n# z-around' >> ~/.zshrc
-echo '. ~/z-around/z.sh' >> ~/.zshrc
-
-# fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-add_omz_plugin fzf
-printf '%c' "message" '\n# fzf' >> ~/.zshrc
-echo 'export FZF_PREVIEW_ADVANCED=true' >> ~/.zshrc
-
-# exa
-sudo apt install exa -y
+# zoxide
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # bat
 sudo apt install bat -y
@@ -235,11 +200,6 @@ cargo install spotifyd --locked
 # control backlight laptop
 sudo usermod -aG video "$USER" # NOTE: reboot required
 sudo apt install brightnessctl -y
-
-# displaylink driver: https://github.com/AdnanHodzic/displaylink-debian/tree/master
-git clone https://github.com/AdnanHodzic/displaylink-debian.git
-cd displaylink-debian
-sudo ./displaylink-debian.sh
 
 # clean
 sudo apt clean

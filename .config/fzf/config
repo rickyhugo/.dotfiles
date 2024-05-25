@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export FZF_COMPLETION_TRIGGER=';'
-export FZF_DEFAULT_COMMAND="rg -uu --files -H"
