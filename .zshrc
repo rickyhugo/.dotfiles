@@ -58,7 +58,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias chs="$HOME/.my-shit/scripts/headset.sh"
 alias kb="$HOME/.my-shit/scripts/keyboard.sh"
 
-alias ns="tmux new-session -s dev-ns -c $HOME/dev/vega/app"
+alias tns="tmux new-session -s ns -c $HOME/dev/vega/app"
 
 # 📚
 HISTSIZE=5000
@@ -78,14 +78,13 @@ export FZF_DEFAULT_COMMAND="rg -uu --files -H"
 export FZF_PREVIEW_ADVANCED=true 
 export FZF_COMPLETION_TRIGGER=';'
 
-# 🧰
-eval "$(zoxide init zsh)"
-eval "$(~/.local/bin/mise activate zsh)"
-
 # ⏩
 export PATH="$PATH:$HOME/.local/bin" # misc
 export PATH="$HOME/.cargo/bin:$PATH" # rust
-export PATH=$PATH:/usr/local/go/bin # go
+
+# 🧰
+eval "$(zoxide init zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
 
 # 🤖
 # pnpm

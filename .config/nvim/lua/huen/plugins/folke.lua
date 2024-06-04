@@ -60,6 +60,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		cmd = "Trouble",
 		opts = {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
@@ -76,8 +77,8 @@ return {
 		keys = {
 			{
 				"<leader>xx",
-				":TroubleToggle<cr>",
-				desc = "Open workspace diagnostics",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
 			},
 		},
 	},

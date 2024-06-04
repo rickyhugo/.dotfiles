@@ -23,6 +23,13 @@ return {
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-emoji",
+			"kristijanhusak/vim-dadbod-completion",
+		},
+		{
+			"Exafunction/codeium.nvim",
+			cmd = "Codeium",
+			build = ":Codeium Auth",
+			opts = {},
 		},
 	},
 	config = function()
@@ -74,6 +81,7 @@ return {
 				{ name = "nvim_lua" },
 				{ name = "path" },
 				{ name = "emoji" },
+				{ name = "codeium" },
 			},
 
 			window = {
@@ -91,8 +99,18 @@ return {
 						luasnip = "[SNIP]",
 						path = "[PATH]",
 						emoji = "[EMOJI]",
+						codeium = "[COD]",
 					},
+					symbol_map = { Codeium = "" },
 				}),
+			},
+		})
+
+		-- SQL
+		cmp.setup.filetype({ "sql" }, {
+			sources = {
+				{ name = "vim-dadbod-completion" },
+				{ name = "buffer" },
 			},
 		})
 

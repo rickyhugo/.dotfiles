@@ -31,7 +31,7 @@ keymap("n", "<leader>Y", '"+Y')
 -- disable "Q"
 keymap("n", "Q", "<nop>")
 
--- disable recording until i learnt it
+-- disable recording until i learn it
 keymap("n", "q", "<nop>")
 
 --open directory via tmux
@@ -58,7 +58,7 @@ keymap("n", "<leader>w", ":w<CR>")
 -- format shortcut
 keymap("n", "<leader>bf", vim.lsp.buf.format)
 
--- navigate panes: arrows
+-- navigate panes
 keymap("n", "<M-h>", "<C-w>h")
 keymap("n", "<M-j>", "<C-w>j")
 keymap("n", "<M-k>", "<C-w>k")
@@ -70,3 +70,9 @@ keymap("n", ",e", "f_")
 
 -- delete buffer
 keymap("n", "<leader>bd", "<cmd>bd<CR>")
+
+-- resize buffer
+keymap("n", "<C-h>", "10<C-w>>")
+keymap("n", "<C-j>", "10<C-w>+")
+keymap("n", "<C-k>", "10<C-w>-")
+keymap("n", "<C-l>", "10<C-w><")
