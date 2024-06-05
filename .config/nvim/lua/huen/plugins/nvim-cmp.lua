@@ -112,6 +112,16 @@ return {
 				{ name = "vim-dadbod-completion" },
 				{ name = "buffer" },
 			},
+			formatting = {
+				format = require("lspkind").cmp_format({
+					mode = "symbol",
+					max_width = 50,
+					ellipsis_char = "...",
+					menu = {
+						["vim-dadbod-completion"] = "[DB]",
+					},
+				}),
+			},
 		})
 
 		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).

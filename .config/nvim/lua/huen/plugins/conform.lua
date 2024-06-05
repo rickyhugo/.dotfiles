@@ -31,7 +31,7 @@ return {
 		})
 
 		require("conform").formatters.sqlfluff = {
-			args = { "fix", "--force", "-" },
+			args = { "fix", "--dialect=postgres", "-" },
 		}
 	end,
 }

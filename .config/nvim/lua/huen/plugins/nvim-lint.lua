@@ -16,6 +16,8 @@ return {
 			python = { "mypy" },
 		}
 
+		lint.linters.sqlfluff.args = { "lint", "--format=json", "--dialect=postgres", "-" }
+
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			callback = function()
 				lint.try_lint()
