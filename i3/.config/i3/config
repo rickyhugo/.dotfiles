@@ -222,7 +222,7 @@ bindsym Control+$alt+k exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@
 bindsym Control+$alt+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 
 # gnome, keyboard input, etc
-exec_always --no-startup-id ~/.my-shit/i3-setup.sh
+exec_always --no-startup-id ~/scripts/i3.sh
 
 # move workspace to monitor
 bindsym $mod+m move workspace to output left

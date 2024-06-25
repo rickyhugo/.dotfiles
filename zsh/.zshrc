@@ -53,10 +53,10 @@ alias vim='nvim'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 alias cat='batcat'
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias up='aguu -y && agar -y'
 
 alias chs="$HOME/.my-shit/scripts/headset.sh"
-alias kb="$HOME/.my-shit/scripts/keyboard.sh"
+alias ckb="$HOME/.my-shit/scripts/keyboard.sh"
 
 alias tns="tmux new-session -s ns -c $HOME/dev/vega/app"
 
