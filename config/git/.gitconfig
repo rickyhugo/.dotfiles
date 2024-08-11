@@ -11,6 +11,6 @@
 	name = rickyhugo
 [core]
   editor = nvim
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore-global
 [color]
   ui = auto
