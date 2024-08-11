@@ -1,0 +1,11 @@
+git-all
+xclip
+stow
+jq
+bat
+playerctl
+brightnessctl
+lua5.4
+liblua5.4-dev
+luarocks
+tmux

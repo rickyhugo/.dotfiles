@@ -14,6 +14,7 @@ return {
 			yaml = { "yamllint" },
 			lua = { "luacheck" },
 			python = { "mypy" },
+			ansible = { "ansible_lint" },
 		}
 
 		lint.linters.sqlfluff.args = { "lint", "--format=json", "--dialect=postgres", "-" }

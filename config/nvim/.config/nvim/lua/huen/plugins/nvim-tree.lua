@@ -23,6 +23,6 @@ return {
 		},
 	},
 	config = function()
-		require("nvim-tree").setup({ view = { side = "right" } })
+		require("nvim-tree").setup({ view = { side = "right", width = 40 } })
 	end,
 }

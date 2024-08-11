@@ -67,12 +67,12 @@ return {
 				keymap("n", "gr", "<cmd>Lspsaga finder<CR>", opts)
 				keymap("n", "<leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
 
-				if client.server_capabilities.codeActionProvider then
+				if client ~= nil and client.server_capabilities.codeActionProvider then
 					keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 					keymap("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 				end
 
-				if client.name == "tsserver" then
+				if client ~= nil and client.name == "tsserver" then
 					keymap("n", "<Leader>oi", "<Cmd>OrganizeImports<CR>")
 				end
 			end,
@@ -228,6 +228,7 @@ return {
 				"pyright",
 				"ruff_lsp",
 				"rust_analyzer",
+				"ansiblels",
 			},
 			automatic_installation = true,
 			handlers = {
