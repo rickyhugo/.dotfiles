@@ -12,3 +12,4 @@ liblua5.4-dev
 luarocks
 tmux
 flameshot
+neofetch
