@@ -1,3 +1,5 @@
+curl
+fuse
 git-all
 xclip
 stow

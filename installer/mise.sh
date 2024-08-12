@@ -7,3 +7,6 @@ echo '.mise.toml' >> "$MY_GITIGNORE"
 mise use -g python
 mise use -g node
 mise use -g go
+
+# NOTE: setup python client for neovim
+python -m pip install pynvim
