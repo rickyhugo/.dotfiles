@@ -18,7 +18,7 @@ return {
 				graphql = { "prettierd" },
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format" },
-				sh = { "beautysh", "shellharden" },
+				sh = { "shfmt", "shellharden" },
 				sql = { "sqlfluff" },
 				toml = { "taplo" },
 				rust = { "rustfmt" },

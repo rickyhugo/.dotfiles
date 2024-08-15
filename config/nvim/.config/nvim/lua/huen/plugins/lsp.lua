@@ -100,13 +100,16 @@ return {
 			ensure_installed = {
 				"prettierd",
 				"eslint_d",
-				"beautysh",
+				"shfmt",
 				"shellharden", -- NOTE: requires rust
 				"shellcheck",
 				"hadolint",
 				"markdownlint",
 				"jsonlint",
 				"yamllint",
+				"stylua",
+				"luacheck",
+				"sqlfluff",
 			},
 		})
 

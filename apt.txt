@@ -10,6 +10,8 @@ brightnessctl
 lua5.4
 liblua5.4-dev
 luarocks
-tmux
 flameshot
 neofetch
+blueman
+ripgrep
+dunst
