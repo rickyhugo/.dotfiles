@@ -227,11 +227,14 @@ exec_always --no-startup-id ~/.config/i3/custom.sh
 # move workspace to monitor
 bindsym $mod+m move workspace to output left
 
+set $laptop_id eDP-1
+set $monitor_id DP-2
+
 # connect external monitor
-bindsym $mod+Shift+s exec xrandr --output DP-2 --auto --primary --left-of eDP-1
+bindsym $mod+Shift+s exec xrandr --output $monitor_id --auto --primary --left-of $laptop_id
 
 # reset to laptop monitor
-bindsym $mod+Shift+x exec xrandr --output eDP-1 --auto --output DP-2 --off
+bindsym $mod+Shift+x exec xrandr --output $laptop_id --auto --output $monitor_id --off
 
 # lock screen
 bindsym $mod+$alt+l exec i3lock -c 000000
