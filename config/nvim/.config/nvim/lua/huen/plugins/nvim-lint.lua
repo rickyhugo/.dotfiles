@@ -1,8 +1,8 @@
 return {
 	"mfussenegger/nvim-lint",
 	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
-	config = function()
+	events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+	config = function(_, opts)
 		local lint = require("lint")
 		lint.linters_by_ft = {
 			sql = { "sqlfluff" },
@@ -10,18 +10,17 @@ return {
 			sh = { "shellcheck" },
 			docker = { "hadolint" },
 			json = { "jsonlint" },
-			markdown = { "markdownlint" },
+			markdown = { "markdownlint", "cspell" },
 			yaml = { "yamllint" },
 			lua = { "luacheck" },
 			python = { "mypy" },
 			ansible = { "ansible_lint" },
 		}
 
-		lint.linters.sqlfluff.args = { "lint", "--format=json", "--dialect=postgres", "-" }
-
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+		vim.api.nvim_create_autocmd(opts.events, {
 			callback = function()
 				lint.try_lint()
+				lint.try_lint("codespell")
 			end,
 		})
 	end,

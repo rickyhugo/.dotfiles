@@ -21,3 +21,4 @@ code --install-extension richie5um2.vscode-sort-json
 code --install-extension usernamehw.errorlens
 code --install-extension vscodevim.vim
 code --install-extension yzane.markdown-pdf
+code --install-extension tamasfe.even-better-toml

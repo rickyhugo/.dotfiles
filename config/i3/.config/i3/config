@@ -192,6 +192,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        tray_output primary
 }
 
 # ------------------------------------------
@@ -234,10 +235,14 @@ set $monitor_id DP-2
 bindsym $mod+Shift+s exec xrandr --output $monitor_id --auto --primary --left-of $laptop_id
 
 # reset to laptop monitor
-bindsym $mod+Shift+x exec xrandr --output $laptop_id --auto --output $monitor_id --off
+bindsym $mod+Shift+x exec xrandr --output $laptop_id --auto --primary --output $monitor_id --off
 
 # lock screen
 bindsym $mod+$alt+l exec i3lock -c 000000
+
+# dedicated workspaces
+assign [class="^Slack$"] 5
+assign [class="^Spotify$"] 5
 
 # ------------------------------------------
 # CUSTOM KEYS END

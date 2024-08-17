@@ -1,0 +1,7 @@
+[[search_dirs]]
+path = "/home/huen/.dotfiles"
+depth = 10
+
+[[search_dirs]]
+path = "/home/huen/dev"
+depth = 10

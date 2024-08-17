@@ -30,18 +30,6 @@ return {
 				local opts = { buffer = event.buf }
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-				-- NOTE: deprecated
-				-- vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-				-- vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-				-- vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-				-- vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-				-- vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-				-- vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-				-- vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-				-- vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-				-- vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-				-- vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-
 				keymap("n", "gd", vim.lsp.buf.definition, opts)
 				keymap("n", "gt", vim.lsp.buf.type_definition, opts)
 				keymap("n", "gD", vim.lsp.buf.declaration, opts)
@@ -49,14 +37,6 @@ return {
 				keymap("n", "gw", vim.lsp.buf.document_symbol, opts)
 				keymap("n", "gW", vim.lsp.buf.workspace_symbol, opts)
 				keymap("n", "<leader>vd", vim.diagnostic.open_float, opts)
-
-				-- NOTE: disable in favor of LSP saga
-				-- keymap("n", "[d", vim.diagnostic.goto_prev, opts)
-				-- keymap("n", "]d", vim.diagnostic.goto_next, opts)
-				-- keymap("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-				-- keymap("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-				-- keymap("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-				-- keymap("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
 				-- NOTE: LSP saga keymaps
 				keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
@@ -110,6 +90,8 @@ return {
 				"stylua",
 				"luacheck",
 				"sqlfluff",
+				"codespell",
+				"cspell",
 			},
 		})
 

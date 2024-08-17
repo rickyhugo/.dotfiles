@@ -14,4 +14,3 @@ flameshot
 neofetch
 blueman
 ripgrep
-dunst

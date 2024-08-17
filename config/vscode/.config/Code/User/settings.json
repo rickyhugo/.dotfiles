@@ -18,7 +18,7 @@
   "catppuccin.accentColor": "flamingo",
   "catppuccin.bracketMode": "neovim",
   "catppuccin.italicKeywords": false,
-  "editor.fontFamily": "Iosevka Term",
+  "editor.fontFamily": "IosevkaTerm NFM",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.formatOnSave": true,
@@ -37,13 +37,15 @@
   "jupyter.askForKernelRestart": false,
   "jupyter.runStartupCommands": ["%load_ext autoreload", "%autoreload 2"],
   "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
+  "keyboard.dispatch": "keyCode",
+  "notebook.defaultFormatter": "charliermarsh.ruff",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
   "notebook.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
@@ -56,7 +58,7 @@
   "python.testing.pytestEnabled": true,
   "ruff.organizeImports": true,
   "ruff.showNotifications": "onError",
-  "terminal.integrated.fontFamily": "Iosevka Term",
+  "terminal.integrated.fontFamily": "IosevkaTerm NFM",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.inheritEnv": false,
   "vim.easymotion": false,

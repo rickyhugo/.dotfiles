@@ -49,14 +49,13 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # ⚡
+alias v='nvim'
+alias vi='nvim'
 alias vim='nvim'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 alias cat='batcat'
 alias up='aguu -y && agar -y'
-
-alias chs="$HOME/.my-shit/scripts/headset.sh"
-alias ckb="$HOME/.my-shit/scripts/keyboard.sh"
 
 alias tns="tmux new-session -s ns -c $HOME/dev/vega/app"
 

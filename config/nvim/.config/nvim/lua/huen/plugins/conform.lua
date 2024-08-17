@@ -29,9 +29,5 @@ return {
 				timeout_ms = 500,
 			},
 		})
-
-		require("conform").formatters.sqlfluff = {
-			args = { "fix", "--dialect=postgres", "-" },
-		}
 	end,
 }
