@@ -25,9 +25,6 @@ return {
 		},
 	},
 
-	-- neoconf
-	{ "folke/neoconf.nvim", cmd = "Neoconf" },
-
 	-- zen mode
 	{
 		"folke/zen-mode.nvim",
