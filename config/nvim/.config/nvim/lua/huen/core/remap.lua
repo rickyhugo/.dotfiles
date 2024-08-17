@@ -47,7 +47,7 @@ keymap("n", "q", "<nop>")
 keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- edit all occurences of selected text
-keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left><left>]])
+keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left>]])
 
 -- make bash script executable
 keymap("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -76,3 +76,8 @@ keymap("n", "<C-h>", "10<C-w>>")
 keymap("n", "<C-j>", "10<C-w>+")
 keymap("n", "<C-k>", "10<C-w>-")
 keymap("n", "<C-l>", "10<C-w><")
+
+-- inlay hints
+keymap("n", "<leader>th", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)
