@@ -240,6 +240,9 @@ bindsym $mod+Shift+x exec xrandr --output $laptop_id --auto --primary --output $
 # lock screen
 bindsym $mod+$alt+l exec i3lock -c 000000
 
+# bluetooth manager
+bindsym Control+$alt+b exec blueman-manager
+
 # dedicated workspaces
 assign [class="^Slack$"] 5
 assign [class="^Spotify$"] 5
