@@ -53,7 +53,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -200,10 +200,10 @@ bar {
 # ------------------------------------------
 
 # open config
-bindsym $mod+c exec kitty -e nvim ~/.config/i3/config
+bindsym $mod+c exec --no-startup-id kitty -e nvim ~/.config/i3/config
 
 # browser
-bindsym $mod+b exec google-chrome-stable
+bindsym $mod+b exec --no-startup-id google-chrome-stable
 
 # toggle layouts
 bindsym $mod+t layout toggle tabbed splith splitv
@@ -216,13 +216,13 @@ hide_edge_borders smart
 exec_always --no-startup-id unclutter -reset -root -idle 1
 
 # function keys
-bindsym XF86MonBrightnessUp exec brightnessctl set +20% # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +20% # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 20%- # decrease screen brightness
 
 # media player
-bindsym Control+$alt+h exec playerctl previous && $refresh_i3status
-bindsym Control+$alt+l exec playerctl next && $refresh_i3status
-bindsym Control+$alt+space exec playerctl play-pause && $refresh_i3status
+bindsym Control+$alt+h exec --no-startup-id playerctl previous && $refresh_i3status
+bindsym Control+$alt+l exec --no-startup-id playerctl next && $refresh_i3status
+bindsym Control+$alt+space exec --no-startup-id playerctl play-pause && $refresh_i3status
 
 # volume
 bindsym Control+$alt+j exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -239,16 +239,16 @@ set $laptop_id eDP-1
 set $monitor_id DP-2
 
 # connect external monitor
-bindsym $mod+Shift+s exec xrandr --output $monitor_id --auto --primary --left-of $laptop_id
+bindsym $mod+Shift+s exec --no-startup-id xrandr --output $monitor_id --auto --primary --left-of $laptop_id
 
 # reset to laptop monitor
-bindsym $mod+Shift+x exec xrandr --output $laptop_id --auto --primary --output $monitor_id --off
+bindsym $mod+Shift+x exec --no-startup-id xrandr --output $laptop_id --auto --primary --output $monitor_id --off
 
 # lock screen
-bindsym $mod+$alt+l exec i3lock -c 000000
+bindsym $mod+$alt+l exec --no-startup-id i3lock -c 000000
 
 # bluetooth manager
-bindsym Control+$alt+b exec blueman-manager
+bindsym Control+$alt+b exec --no-startup-id blueman-manager
 
 # dedicated workspaces
 assign [class="^Slack$"] 5
