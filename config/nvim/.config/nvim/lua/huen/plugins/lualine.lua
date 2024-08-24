@@ -2,6 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = function()
+		local icons = require("huen.core.icons")
 		require("lualine").setup({
 			options = {
 				theme = "catppuccin",
@@ -13,11 +14,15 @@ return {
 					"diff",
 				},
 				lualine_c = {
-					"filename",
 					{
 						"diagnostics",
-						sources = { "nvim_lsp" },
-						symbols = { error = " ", warn = " ", info = " ", hint = " " },
+						sources = { "nvim_lsp", "nvim_diagnostic" },
+						symbols = {
+							error = icons.diagnostics.Error,
+							warn = icons.diagnostics.Warn,
+							info = icons.diagnostics.Info,
+							hint = icons.diagnostics.Hint,
+						},
 					},
 				},
 			},

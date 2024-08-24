@@ -60,21 +60,22 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "*.py", "*.lua" },
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-	end,
-})
+vim.opt.fillchars:append({ eob = " " })
 
 vim.o.shortmess = vim.o.shortmess .. "I" -- Disable intro message
 
 vim.opt.splitright = true -- Vertical split to the right
 
 -- Diagnostic symbols in sign column
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-for type, icon in pairs(signs) do
+for type, icon in pairs(require("huen.core.icons").diagnostics) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- dynamic padding
+vim.api.nvim_create_autocmd({ "VimEnter", "BufWinEnter" }, {
+	command = "silent !kitty @ set-spacing padding-left=0",
+})
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+	command = "silent !kitty @ set-spacing padding-left=3",
+})

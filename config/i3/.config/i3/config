@@ -208,6 +208,13 @@ bindsym $mod+b exec google-chrome-stable
 # toggle layouts
 bindsym $mod+t layout toggle tabbed splith splitv
 
+# fix borders
+default_border pixel 2
+hide_edge_borders smart
+
+# unclutter
+exec_always --no-startup-id unclutter -reset -root -idle 1
+
 # function keys
 bindsym XF86MonBrightnessUp exec brightnessctl set +20% # increase screen brightness
 bindsym XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brightness

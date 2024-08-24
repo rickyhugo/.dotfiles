@@ -23,6 +23,9 @@ return {
 		},
 	},
 	config = function()
-		require("nvim-tree").setup({ view = { side = "right", width = 40 } })
+		require("nvim-tree").setup({
+			view = { side = "right", width = 40 },
+			filters = { custom = { "^\\.git$" } },
+		})
 	end,
 }
