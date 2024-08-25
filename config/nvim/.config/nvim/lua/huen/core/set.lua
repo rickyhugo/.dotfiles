@@ -72,10 +72,10 @@ for type, icon in pairs(require("huen.core.icons").diagnostics) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- dynamic padding
+-- remove vertical padding inside vim
 vim.api.nvim_create_autocmd({ "VimEnter", "BufWinEnter" }, {
-	command = "silent !kitty @ set-spacing padding-left=0",
+	command = "silent !kitty @ set-spacing padding-v=0",
 })
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
-	command = "silent !kitty @ set-spacing padding-left=3",
+	command = "silent !kitty @ set-spacing padding-v=2",
 })
