@@ -1,83 +1,58 @@
 local keymap = vim.keymap.set
 
--- open vim file explorer
-keymap("n", "<leader>pv", vim.cmd.Ex)
+keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected block of code down" })
+keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected block of code up" })
 
--- move selected block of code
-keymap("v", "J", ":m '>+1<CR>gv=gv")
-keymap("v", "K", ":m '<-2<CR>gv=gv")
+keymap("n", "J", "mzJ`z", { desc = "Keep cursor in place when 'J'" })
+keymap("n", "<C-d>", "<C-d>zz", { desc = "Keep cursor in place when '<C-d>'" })
+keymap("n", "<C-u>", "<C-u>zz", { desc = "keep cursor in place when '<C-u>'" })
 
--- keep cursor in place when "J"
-keymap("n", "J", "mzJ`z")
+keymap("n", "n", "nzzzv", { desc = "Keep searched word centered when 'n'" })
+keymap("n", "N", "Nzzzv", { desc = "keep searched word centered when 'N'" })
 
--- keep cursor centered u/d navigation
-keymap("n", "<C-d>", "<C-d>zz")
-keymap("n", "<C-u>", "<C-u>zz")
+keymap("x", "<leader>p", '"_dP', { desc = "Persist yanked buffer after select + paste" })
+keymap("n", "<leader>d", '"_d', { desc = "Persist yanked buffer after select + paste" })
+keymap("v", "<leader>d", '"_d', { desc = "Persist yanked buffer after select + paste" })
 
--- keep searched word centered when navigating
-keymap("n", "n", "nzzzv")
-keymap("n", "N", "Nzzzv")
+keymap("n", "<leader>y", '"+y', { desc = "Persist yanked buffer after yank + paste" })
+keymap("v", "<leader>y", '"+y', { desc = "Persist yanked buffer after yank + paste" })
+keymap("n", "<leader>Y", '"+Y', { desc = "Persist yanked buffer after yank + paste" })
 
--- persist yanked buffer after select + paste
-keymap("x", "<leader>p", '"_dP')
-keymap("n", "<leader>d", '"_d')
-keymap("v", "<leader>d", '"_d')
+keymap("n", "Q", "<nop>", { desc = "Disable 'Q'" })
+keymap("n", "q", "<nop>", { desc = "Disable recording" })
 
---yank to system clipboard (paste with <C-v>)
-keymap("n", "<leader>y", '"+y')
-keymap("v", "<leader>y", '"+y')
-keymap("n", "<leader>Y", '"+Y')
+keymap(
+	"n",
+	"<leader>r",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Edit all occurrences of the word under cursor" }
+)
+keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left>]], { desc = "Edit all occurences of selected text" })
 
--- disable "Q"
-keymap("n", "Q", "<nop>")
+keymap("n", "<leader>w", ":w<CR>", { desc = "Write buffer" })
+keymap("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Delete buffer" })
 
--- disable recording until i learn it
-keymap("n", "q", "<nop>")
+keymap("n", "<M-h>", "<C-w>h", { desc = "Navigate to left pane" })
+keymap("n", "<M-j>", "<C-w>j", { desc = "Navigate to bottom pane" })
+keymap("n", "<M-k>", "<C-w>k", { desc = "Navigate to top pane" })
+keymap("n", "<M-l>", "<C-w>l", { desc = "Navigate to right pane" })
 
---open directory via tmux
--- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+keymap("n", ",b", "F_", { desc = "Backward snake case navigation" })
+keymap("n", ",e", "f_", { desc = "Forward snake case navigation" })
 
--- quickfix
+keymap("n", "<C-h>", "10<C-w>>", { desc = "Resize buffer (left)" })
+keymap("n", "<C-j>", "10<C-w>+", { desc = "Resize buffer (bottom)" })
+keymap("n", "<C-k>", "10<C-w>-", { desc = "Resize buffer (top)" })
+keymap("n", "<C-l>", "10<C-w><", { desc = "Resize buffer (right)" })
+
+keymap("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make shell script executable" })
+
+keymap("n", "<leader>th", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle inlay hints" })
+
+-- TODO: quickfix navigation
 -- keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- edit all occurrences of the word under cursor
-keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- edit all occurences of selected text
-keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left>]])
-
--- make bash script executable
-keymap("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- write shortcut
-keymap("n", "<leader>w", ":w<CR>")
-
--- format shortcut
-keymap("n", "<leader>bf", vim.lsp.buf.format)
-
--- navigate panes
-keymap("n", "<M-h>", "<C-w>h")
-keymap("n", "<M-j>", "<C-w>j")
-keymap("n", "<M-k>", "<C-w>k")
-keymap("n", "<M-l>", "<C-w>l")
-
--- snake case navigation
-keymap("n", ",b", "F_")
-keymap("n", ",e", "f_")
-
--- delete buffer
-keymap("n", "<leader>bd", "<cmd>bd<CR>")
-
--- resize buffer
-keymap("n", "<C-h>", "10<C-w>>")
-keymap("n", "<C-j>", "10<C-w>+")
-keymap("n", "<C-k>", "10<C-w>-")
-keymap("n", "<C-l>", "10<C-w><")
-
--- inlay hints
-keymap("n", "<leader>th", function()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end)

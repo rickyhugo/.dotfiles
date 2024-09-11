@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		-- Required
-		{ "williamboman/mason.nvim" }, --
+		{ "williamboman/mason.nvim" }, -- Required
 		{ "williamboman/mason-lspconfig.nvim" }, -- Required
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim" }, -- Required
 		{ "onsails/lspkind.nvim" }, -- Required
@@ -18,6 +18,9 @@ return {
 		-- Snippets
 		{ "L3MON4D3/LuaSnip" }, -- Required
 		{ "rafamadriz/friendly-snippets" }, -- Optional
+
+		-- typescript
+		{ "yioneko/nvim-vtsls" },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -50,10 +53,6 @@ return {
 				if client ~= nil and client.server_capabilities.codeActionProvider then
 					keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 					keymap("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-				end
-
-				if client ~= nil and client.name == "tsserver" then
-					keymap("n", "<Leader>oi", "<Cmd>OrganizeImports<CR>")
 				end
 			end,
 		})
@@ -150,58 +149,51 @@ return {
 		end
 
 		-- typescript
-		local ts_augroup = vim.api.nvim_create_augroup("TSAutocmds", { clear = true })
-
-		local function organize_imports()
-			local params = {
-				command = "_typescript.organizeImports",
-				arguments = { vim.api.nvim_buf_get_name(0) },
-				title = "Organize imports [TS]",
-			}
-			vim.lsp.buf.execute_command(params)
-		end
+		local ts_augroup = vim.api.nvim_create_augroup("TypescriptAutocmds", { clear = true })
 
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = ts_augroup,
-			pattern = { "*.ts", "*.tsx" },
-			callback = organize_imports,
-			desc = "Organize imports [TS]",
+			pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+			command = "VtsExec organize_imports",
+			desc = "Organize imports [JS/TS]",
 		})
 
 		vim.api.nvim_create_autocmd("BufWritePost", {
 			group = ts_augroup,
 			pattern = { "package.json" },
 			command = "LspRestart eslint",
-			desc = "Restart eslint upon changes in package.json [JS/TS]",
+			desc = "Restart eslint upon changes in 'package.json' [JS/TS]",
 		})
 
-		local function tsserver()
-			require("lspconfig").tsserver.setup({
+		local function vtsls()
+			require("lspconfig").vtsls.setup({
 				settings = {
+					complete_function_calls = true,
+					vtsls = {
+						enableMoveToFileCodeAction = true,
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
 					typescript = {
-						format = {
-							semicolons = "insert",
-							tabSize = 2,
-							indentSize = 2,
-							convertTabsToSpaces = true,
+						preferences = {
+							importModuleSpecifier = "non-relative",
+						},
+						updateImportsOnFileMove = { enabled = "always" },
+						suggest = {
+							completeFunctionCalls = true,
 						},
 						inlayHints = {
-							includeInlayEnumMemberValueHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = "all",
-							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayVariableTypeHints = true,
+							enumMemberValues = { enabled = true },
+							functionLikeReturnTypes = { enabled = true },
+							parameterNames = { enabled = "literals" },
+							parameterTypes = { enabled = true },
+							propertyDeclarationTypes = { enabled = true },
+							variableTypes = { enabled = false },
 						},
-					},
-					completions = {
-						completeFunctionCalls = true,
-					},
-				},
-				init_options = {
-					preferences = {
-						importModuleSpecifierPreference = "non-relative",
 					},
 				},
 			})
@@ -209,7 +201,7 @@ return {
 
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"tsserver",
+				"vtsls",
 				"eslint",
 				"tailwindcss",
 				"lua_ls",
@@ -230,7 +222,7 @@ return {
 				lua_ls = lua_ls,
 				pyright = pyright,
 				ruff_lsp = ruff_lsp,
-				tsserver = tsserver,
+				vtsls = vtsls,
 			},
 		})
 	end,

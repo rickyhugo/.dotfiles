@@ -57,8 +57,6 @@ alias lzd='lazydocker'
 alias cat='batcat'
 alias up='aguu -y && agar -y'
 
-alias tns="tmux new-session -s ns -c $HOME/dev/vega/app"
-
 # 📚
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
