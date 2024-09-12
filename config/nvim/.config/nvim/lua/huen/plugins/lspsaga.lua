@@ -5,6 +5,7 @@ return {
 		require("lspsaga").setup({
 			lightbulb = { enable = false },
 			ui = { border = "rounded" },
+			symbol_in_winbar = { enable = false },
 		})
 	end,
 	dependencies = {

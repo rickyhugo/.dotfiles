@@ -44,6 +44,7 @@ return {
 			},
 		},
 		defaults = {
+			file_ignore_patterns = { ".git/", "node_modules/" },
 			mappings = {
 				i = {
 					["<esc>"] = "close", -- close explorer with <esc>
