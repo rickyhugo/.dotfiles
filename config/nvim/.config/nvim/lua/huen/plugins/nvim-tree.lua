@@ -9,16 +9,12 @@ return {
 	keys = {
 		{
 			"<leader>tt",
-			function()
-				require("nvim-tree.api").tree.toggle()
-			end,
+			"<cmd>NvimTreeToggle<cr>",
 			desc = "Toggle file tree",
 		},
 		{
 			"<leader>ft",
-			function()
-				require("nvim-tree.api").tree.focus()
-			end,
+			"<cmd>NvimTreeFocus<cr>",
 			desc = "Focus file tree",
 		},
 	},

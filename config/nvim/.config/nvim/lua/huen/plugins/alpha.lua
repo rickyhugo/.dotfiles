@@ -43,6 +43,43 @@ return {
 			{ type = "padding", val = 0 },
 			fortune,
 		}
+		theme.config.opts = {
+			margin = 5,
+			setup = function()
+				vim.api.nvim_create_autocmd("DirChanged", {
+					pattern = "*",
+					group = "alpha_temp",
+					callback = function()
+						require("alpha").redraw()
+						vim.cmd("AlphaRemap")
+					end,
+				})
+
+				vim.api.nvim_create_autocmd("User", {
+					pattern = "AlphaReady",
+					desc = "Hide cursor and ruler for alpha",
+					callback = function()
+						-- local hl = vim.api.nvim_get_hl(0, { name = "Cursor" })
+						-- hl.blend = 100
+						-- vim.api.nvim_set_hl(0, "Cursor", hl)
+						-- vim.opt.guicursor:append("a:Cursor/lCursor")
+						vim.opt.ruler = false -- hide ruler on startup
+					end,
+				})
+				vim.api.nvim_create_autocmd("BufUnload", {
+					buffer = 0,
+					desc = "Show cursor and ruler after alpha",
+					callback = function()
+						-- local hl = vim.api.nvim_get_hl(0, { name = "Cursor" })
+						-- hl.blend = 0
+						-- vim.api.nvim_set_hl(0, "Cursor", hl)
+						-- vim.opt.guicursor:remove("a:Cursor/lCursor")
+						vim.opt.ruler = true -- show ruler after startup
+					end,
+				})
+			end,
+		}
+
 		require("alpha").setup(theme.config)
 	end,
 }

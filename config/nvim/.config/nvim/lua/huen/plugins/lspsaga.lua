@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("lspsaga").setup({
 			lightbulb = { enable = false },
-			ui = { border = "rounded" },
+			ui = { border = "rounded", kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind() },
 			symbol_in_winbar = { enable = false },
 		})
 	end,

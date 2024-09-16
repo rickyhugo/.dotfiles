@@ -18,12 +18,35 @@ return {
 			options = {
 				theme = "auto",
 				globalstatus = vim.o.laststatus == 3,
-				disabled_filetypes = { statusline = { "NvimTree", "alpha" } },
+				disabled_filetypes = {
+					statusline = { "NvimTree", "alpha" },
+					winbar = { "NvimTree", "alpha" },
+				},
 			},
+
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(str)
+							return str:sub(1, 1)
+						end,
+					},
+				},
 				lualine_b = {
-					"branch",
+					{
+						"diagnostics",
+						symbols = {
+							error = icons.diagnostics.Error,
+							warn = icons.diagnostics.Warn,
+							info = icons.diagnostics.Info,
+							hint = icons.diagnostics.Hint,
+						},
+					},
+				},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {
 					{
 						"diff",
 						source = function()
@@ -38,22 +61,34 @@ return {
 						end,
 					},
 				},
-				lualine_c = {
-					{
-						"diagnostics",
-						symbols = {
-							error = icons.diagnostics.Error,
-							warn = icons.diagnostics.Warn,
-							info = icons.diagnostics.Info,
-							hint = icons.diagnostics.Hint,
-						},
-					},
-				},
-				lualine_x = {
-					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-					{ "filename", path = 1, padding = { left = 0, right = 1 } },
-				},
+				lualine_z = { "branch" },
 			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
+			},
+
+			winbar = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = { { "filename", path = 1 } },
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
+			},
+			inactive_winbar = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = { { "filename", path = 1 } },
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
+			},
+
 			extensions = { "nvim-tree", "lazy" },
 		}
 		return opts

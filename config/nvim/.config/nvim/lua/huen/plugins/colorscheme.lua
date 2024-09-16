@@ -16,9 +16,16 @@ return {
 				end,
 			},
 			integrations = {
+				cmp = true,
+				treesitter = true,
 				which_key = true,
 				lsp_saga = true,
 				mason = true,
+				alpha = true,
+				nvimtree = true,
+				telescope = { enabled = true },
+				dadbod_ui = true,
+				lsp_trouble = true,
 			},
 		})
 

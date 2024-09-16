@@ -26,3 +26,6 @@ pretty = true
 show_column_numbers = true
 show_error_context = true
 warn_redundant_casts = true
+
+[tool.basedpyright]
+typeCheckingMode = "all"

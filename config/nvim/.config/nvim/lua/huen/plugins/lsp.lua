@@ -33,13 +33,18 @@ return {
 				local opts = { buffer = event.buf }
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-				keymap("n", "gd", vim.lsp.buf.definition, opts)
-				keymap("n", "gt", vim.lsp.buf.type_definition, opts)
-				keymap("n", "gD", vim.lsp.buf.declaration, opts)
-				keymap("n", "gi", vim.lsp.buf.implementation, opts)
-				keymap("n", "gw", vim.lsp.buf.document_symbol, opts)
-				keymap("n", "gW", vim.lsp.buf.workspace_symbol, opts)
-				keymap("n", "<leader>vd", vim.diagnostic.open_float, opts)
+				keymap("n", "gd", vim.lsp.buf.definition, { buffer = event.buf, desc = "Go to definition" })
+				keymap("n", "gt", vim.lsp.buf.type_definition, { buffer = event.buf, desc = "Go to type definition" })
+				keymap("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "Go to declaration" })
+				keymap("n", "gi", vim.lsp.buf.implementation, { buffer = event.buf, desc = "Go to implementation" })
+				keymap("n", "gw", vim.lsp.buf.document_symbol, { buffer = event.buf, desc = "List document symbols" })
+				keymap("n", "gW", vim.lsp.buf.workspace_symbol, { buffer = event.buf, desc = "List workspace symbols" })
+				keymap(
+					"n",
+					"<leader>vd",
+					vim.diagnostic.open_float,
+					{ buffer = event.buf, desc = "Show diagnostic in floating window" }
+				)
 
 				-- NOTE: LSP saga keymaps
 				keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
@@ -49,7 +54,6 @@ return {
 				keymap("n", "<leader>pd", "<cmd>Lspsaga peek_definition<CR>", opts)
 				keymap("n", "gr", "<cmd>Lspsaga finder<CR>", opts)
 				keymap("n", "<leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
-
 				if client ~= nil and client.server_capabilities.codeActionProvider then
 					keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 					keymap("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
@@ -123,14 +127,17 @@ return {
 		end
 
 		-- python
-		local function pyright()
-			require("lspconfig").pyright.setup({
+		local function basedpyright()
+			require("lspconfig").basedpyright.setup({
 				root_dir = require("lspconfig.util").root_pattern("pyproject.toml", "pyrightconfig.json"),
 				settings = {
+					pyright = {
+						disableOrganizeImports = true,
+					},
 					python = {
 						analysis = {
 							autoSearchPaths = true,
-							useLibraryCodeForTypes = true,
+							useLibraryCodeForTypes = false,
 							diagnosticMode = "openFilesOnly",
 						},
 					},
@@ -138,12 +145,14 @@ return {
 			})
 		end
 
-		local function ruff_lsp()
-			require("lspconfig").ruff_lsp.setup({
+		local function ruff()
+			require("lspconfig").ruff.setup({
 				root_dir = require("lspconfig.util").root_pattern("pyproject.toml"),
-				settings = {
-					-- Any extra CLI arguments for `ruff` go here.
-					args = { "--config", "pyproject.toml" },
+				trace = "messages",
+				init_options = {
+					settings = {
+						logLevel = "error",
+					},
 				},
 			})
 		end
@@ -211,8 +220,8 @@ return {
 				"docker_compose_language_service",
 				"taplo",
 				"marksman",
-				"pyright",
-				"ruff_lsp",
+				"basedpyright",
+				"ruff",
 				"rust_analyzer",
 				"ansiblels",
 			},
@@ -220,8 +229,8 @@ return {
 			handlers = {
 				default_setup,
 				lua_ls = lua_ls,
-				pyright = pyright,
-				ruff_lsp = ruff_lsp,
+				basedpyright = basedpyright,
+				ruff = ruff,
 				vtsls = vtsls,
 			},
 		})

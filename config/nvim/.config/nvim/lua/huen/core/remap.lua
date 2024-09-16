@@ -27,7 +27,7 @@ keymap(
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Edit all occurrences of the word under cursor" }
 )
-keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left>]], { desc = "Edit all occurences of selected text" })
+keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left>]], { desc = "Edit all occurrences of selected text" })
 
 keymap("n", "<leader>w", ":w<CR>", { desc = "Write buffer" })
 keymap("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Delete buffer" })

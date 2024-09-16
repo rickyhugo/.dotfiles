@@ -29,7 +29,7 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
-		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Toggle zen mode" } },
 	},
 
 	-- TODO etc. comments
@@ -49,7 +49,7 @@ return {
 				HACK = { icon = " ", color = "warning" },
 				WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
 				PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-				NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+				NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
 				TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 			},
 		},
@@ -59,14 +59,14 @@ return {
 				function()
 					require("todo-comments").jump_next()
 				end,
-				desc = "Next todo comment",
+				desc = "Go to next todo comment",
 			},
 			{
 				"[t",
 				function()
 					require("todo-comments").jump_prev()
 				end,
-				desc = "Previous todo comment",
+				desc = "Go to previous todo comment",
 			},
 		},
 	},
@@ -95,7 +95,12 @@ return {
 			{
 				"<leader>xx",
 				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
+				desc = "Buffer diagnostics [Trouble]",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Workspace diagnostics [Trouble]",
 			},
 		},
 	},
