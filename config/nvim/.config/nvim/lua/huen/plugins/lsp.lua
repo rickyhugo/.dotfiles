@@ -174,6 +174,39 @@ return {
 			desc = "Restart eslint upon changes in 'package.json' [JS/TS]",
 		})
 
+		-- rust
+		local function rust_analyzer()
+			lspconfig.rust_analyzer.setup({
+				settings = {
+					["rust-analyzer"] = {
+						rustfmt = {
+							extraArgs = { "+nightly" },
+						},
+						check = {
+							command = "clippy",
+						},
+						diagnostics = {
+							enable = true,
+						},
+						imports = {
+							granularity = {
+								group = "module",
+							},
+							prefix = "self",
+						},
+						cargo = {
+							buildScripts = {
+								enable = true,
+							},
+						},
+						procMacro = {
+							enable = true,
+						},
+					},
+				},
+			})
+		end
+
 		local function vtsls()
 			require("lspconfig").vtsls.setup({
 				settings = {
@@ -232,6 +265,7 @@ return {
 				basedpyright = basedpyright,
 				ruff = ruff,
 				vtsls = vtsls,
+				rust_analyzer = rust_analyzer,
 			},
 		})
 	end,

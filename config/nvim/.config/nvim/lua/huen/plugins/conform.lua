@@ -21,7 +21,7 @@ return {
 				sh = { "shfmt", "shellharden" },
 				sql = { "sqlfluff" },
 				toml = { "taplo" },
-				rust = { "rustfmt" },
+				rust = { "rustfmt", lsp_format = "fallback" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -29,5 +29,10 @@ return {
 				timeout_ms = 500,
 			},
 		})
+
+		-- NOTE: use rustfmt nightly: `rustup toolchain install nightly`
+		require("conform").formatters.rustfmt = {
+			command = "cargo +nightly fmt",
+		}
 	end,
 }
