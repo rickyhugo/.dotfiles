@@ -44,4 +44,5 @@ return {
 			desc = "Go to harpoon [F]",
 		},
 	},
+	enabled = false,
 }

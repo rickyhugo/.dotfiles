@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # keyboard
-setxkbmap -layout us,se -option caps:escape -option 'grp:alt_shift_toggle' -option compose:ralt # define compose key in order to enable world layer
+setxkbmap -layout us,se -option 'grp:alt_shift_toggle' -option compose:ralt # define compose key in order to enable world layer
 
 # key repeat (<milliseconds_before_repeating> <repetitions_per_second>)
 xset r rate 220 150
