@@ -95,6 +95,9 @@ return {
 				"sqlfluff",
 				"codespell",
 				"cspell",
+				"gofumpt",
+				"goimports-reviser",
+				"golangci-lint",
 			},
 		})
 
@@ -157,23 +160,6 @@ return {
 			})
 		end
 
-		-- typescript
-		local ts_augroup = vim.api.nvim_create_augroup("TypescriptAutocmds", { clear = true })
-
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = ts_augroup,
-			pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
-			command = "VtsExec organize_imports",
-			desc = "Organize imports [JS/TS]",
-		})
-
-		vim.api.nvim_create_autocmd("BufWritePost", {
-			group = ts_augroup,
-			pattern = { "package.json" },
-			command = "LspRestart eslint",
-			desc = "Restart eslint upon changes in 'package.json' [JS/TS]",
-		})
-
 		-- rust
 		local function rust_analyzer()
 			lspconfig.rust_analyzer.setup({
@@ -206,6 +192,49 @@ return {
 				},
 			})
 		end
+
+		-- go
+		local function gopls()
+			lspconfig.gopls.setup({
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true,
+						},
+						staticcheck = true,
+						gofumpt = true,
+					},
+				},
+			})
+		end
+
+		-- typescript
+		local ts_augroup = vim.api.nvim_create_augroup("TypescriptAutocmds", { clear = true })
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = ts_augroup,
+			pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+			callback = function()
+				return require("vtsls").commands.organize_imports(vim.api.nvim_get_current_buf())
+			end,
+			desc = "Organize imports [JS/TS]",
+		})
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = ts_augroup,
+			pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+			callback = function()
+				return require("vtsls").commands.fix_all(vim.api.nvim_get_current_buf())
+			end,
+			desc = "Autofix problems [JS/TS]",
+		})
+
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			group = ts_augroup,
+			pattern = { "package.json" },
+			command = "LspRestart eslint",
+			desc = "Restart eslint upon changes in 'package.json' [JS/TS]",
+		})
 
 		local function vtsls()
 			require("lspconfig").vtsls.setup({
@@ -257,6 +286,7 @@ return {
 				"ruff",
 				"rust_analyzer",
 				"ansiblels",
+				"gopls",
 			},
 			automatic_installation = true,
 			handlers = {
@@ -266,6 +296,7 @@ return {
 				ruff = ruff,
 				vtsls = vtsls,
 				rust_analyzer = rust_analyzer,
+				gopls = gopls,
 			},
 		})
 	end,

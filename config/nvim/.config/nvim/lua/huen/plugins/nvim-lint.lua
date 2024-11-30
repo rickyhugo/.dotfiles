@@ -14,6 +14,7 @@ return {
 			lua = { "luacheck" },
 			python = { "mypy" },
 			ansible = { "ansible_lint" },
+			go = { "golangcilint" },
 		},
 	},
 	config = function(_, opts)

@@ -51,6 +51,7 @@ return {
 				"rust",
 				"query",
 				"xml",
+				"go",
 			},
 			sync_install = false,
 			auto_install = true,

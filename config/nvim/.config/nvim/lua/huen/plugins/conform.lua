@@ -22,6 +22,7 @@ return {
 				sql = { "sqlfluff" },
 				toml = { "taplo" },
 				rust = { "rustfmt", lsp_format = "fallback" },
+				go = { "gofumpt", "goimports-reviser" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
