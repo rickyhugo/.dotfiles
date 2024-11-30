@@ -38,16 +38,16 @@
   nav (tap-hold 200 esc (layer-toggle navigation))
 
   ;; home row mods left
-  a  (tap-hold 200 a lmet)
-  s  (tap-hold 200 s lalt)
-  d  (tap-hold 200 d lctl)
-  f  (tap-hold 200 f lsft)
+  a (tap-hold 200 a lmet)
+  s (tap-hold 200 s lalt)
+  d (tap-hold 200 d lctl)
+  f (tap-hold 200 f lsft)
 
   ;; home row mods right
-  j  (tap-hold 200 j lsft)
-  k  (tap-hold 200 k lctrl)
-  l  (tap-hold 200 l lalt)
-  ;  (tap-hold 200 ; lmeta)
+  j (tap-hold 200 j lsft)
+  k (tap-hold 200 k lctrl)
+  l (tap-hold 200 l lalt)
+  ; (tap-hold 200 ; lmeta)
 )
 
 (deflayer qwerty
