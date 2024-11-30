@@ -22,8 +22,9 @@ return {
 					statusline = { "NvimTree", "alpha" },
 					winbar = { "NvimTree", "alpha" },
 				},
+				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 			},
-
 			sections = {
 				lualine_a = {
 					{

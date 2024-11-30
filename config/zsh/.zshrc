@@ -55,7 +55,9 @@ alias vim='nvim'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 alias cat='batcat'
+alias c='batcat'
 alias up='aguu -y && agar -y'
+alias xclip="xclip -selection c"
 
 # 📚
 HISTSIZE=5000
